@@ -1,5 +1,13 @@
 import { Button, StyleSheet, TextInput, View } from "react-native";
 
+// Importando os recursos de autenticação
+import { auth } from "../../firebase.config";
+
+// Importando a função de login com e-mail e senha
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { useState } from "react";
+
 export default function Login() {
   return (
     <View style={estilos.container}>
