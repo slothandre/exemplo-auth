@@ -5,7 +5,7 @@ export default function Cadastro() {
     <View style={estilos.container}>
       <View style={estilos.formulario}>
         <TextInput placeholder="E-mail" style={estilos.input} />
-        <TextInput placeholder="Senha" style={estilos.input} />
+        <TextInput placeholder="Senha" style={estilos.input} secureTextEntry />
         <View style={estilos.botoes}>
           <Button title="Cadastre-se" color="blue" />
         </View>
