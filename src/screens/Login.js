@@ -9,6 +9,36 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  const login = async () => {
+    if (!email || !senha) {
+      Alert.alert("Atenção!", "Preencha e-mail e senha!");
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, senha);
+      navigation.replace("AreaLogada");
+    } catch (error) {
+      console.error(error.code);
+      let mensagem;
+      switch (error.code) {
+        case "auth/invalid-credential":
+          mensagem = "Dados inválidos!";
+          break;
+        case "auth/invalid-email":
+          mensagem = "Endereço de e-mail inválido!";
+          break;
+        default:
+          mensagem = "Houve um erro, tente mais tarde!";
+          break;
+      }
+      Alert.alert("Ops!", mensagem);
+    }
+  };
+
   return (
     <View style={estilos.container}>
       <View style={estilos.formulario}>
